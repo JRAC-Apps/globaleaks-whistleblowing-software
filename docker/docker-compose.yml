@@ -2,6 +2,11 @@ version: '3.9'
 
 services:
   globaleaks:
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.services.globaleaks.loadbalancer.server.port=443"
+      - "traefik.http.services.globaleaks.loadbalancer.server.scheme=https"
+      - "traefik.http.services.globaleaks.loadbalancer.serverstransport=insecure@file"
     environment:
       DISTRIBUTION: trixie
     build: .
