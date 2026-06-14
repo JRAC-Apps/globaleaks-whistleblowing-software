@@ -1,10 +1,8 @@
-version: '3.9'
-
 services:
   globaleaks:
     labels:
       - "traefik.enable=true"
-      - "traefik.http.services.globaleaks.loadbalancer.server.port=443"
+      - "traefik.http.services.globaleaks.loadbalancer.server.port=8443"
       - "traefik.http.services.globaleaks.loadbalancer.server.scheme=https"
       - "traefik.http.services.globaleaks.loadbalancer.serverstransport=insecure@file"
     environment:
@@ -12,7 +10,6 @@ services:
     build: .
     restart: unless-stopped
     container_name: globaleaks
-    network_mode: host
     cap_drop:
       - ALL
     security_opt:
@@ -23,17 +20,13 @@ services:
       - /tmp:mode=1777
     volumes:
       - globaleaks:/var/globaleaks:rw
-    ports:
-      - 80:8080
-      - 443:8443
-      - 8080:8080
-      - 8443:8443
+    expose:
+      - "8443"
     healthcheck:
       test: ["CMD", "curl", "-k", "-f", "https://localhost:8443/api/health"]
       interval: 30s
       timeout: 5s
       retries: 12
       start_period: 60s
-
 volumes:
   globaleaks: {}
