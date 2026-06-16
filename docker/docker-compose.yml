@@ -2,6 +2,17 @@ services:
   globaleaks:
     labels:
       - "traefik.enable=true"
+      - "traefik.docker.network=dokploy-network"
+      # HTTP -> HTTPS redirect
+      - "traefik.http.routers.audit-globaleaks-zejcly-5-web.rule=Host(`speakup.jrac.com.sa`)"
+      - "traefik.http.routers.audit-globaleaks-zejcly-5-web.entrypoints=web"
+      - "traefik.http.routers.audit-globaleaks-zejcly-5-web.middlewares=redirect-to-https@file"
+      - "traefik.http.routers.audit-globaleaks-zejcly-5-web.service=globaleaks"
+      # HTTPS via Let's Encrypt -> globaleaks backend (TLS, self-signed) on 8443
+      - "traefik.http.routers.audit-globaleaks-zejcly-5-websecure.rule=Host(`speakup.jrac.com.sa`)"
+      - "traefik.http.routers.audit-globaleaks-zejcly-5-websecure.entrypoints=websecure"
+      - "traefik.http.routers.audit-globaleaks-zejcly-5-websecure.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.audit-globaleaks-zejcly-5-websecure.service=globaleaks"
       - "traefik.http.services.globaleaks.loadbalancer.server.port=8443"
       - "traefik.http.services.globaleaks.loadbalancer.server.scheme=https"
       - "traefik.http.services.globaleaks.loadbalancer.serverstransport=insecure@file"
@@ -28,5 +39,11 @@ services:
       timeout: 5s
       retries: 12
       start_period: 60s
+    networks:
+      - dokploy-network
+      - default
 volumes:
   globaleaks: {}
+networks:
+  dokploy-network:
+    external: true
