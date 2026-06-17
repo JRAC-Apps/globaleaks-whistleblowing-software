@@ -79,3 +79,42 @@ html, body { background: #F1F1F1 !important; }
 .btn { border-radius: 10px !important; }
 
 contentinfo, footer { text-align: center !important; }
+
+/* --- login page: same modern centered card (scoped to the login route via :has) --- */
+.reveal:has(app-login) {
+  max-width: 720px !important;
+  margin: 2.5rem auto !important;
+  background: #fff !important;
+  border-radius: 18px !important;
+  box-shadow: 0 12px 48px rgba(30, 30, 30, .10) !important;
+  padding: 2.25rem 2.5rem 1.75rem !important;
+}
+.reveal:has(app-login) #HeaderBox {
+  padding: 0 0 1.25rem 0 !important;
+  border-bottom: 1px solid #F1F1F1 !important;
+  margin-bottom: 1.75rem !important;
+}
+.reveal:has(app-login) #HeaderBox .d-flex { flex-direction: column !important; align-items: stretch !important; }
+.reveal:has(app-login) #HeaderBox1 { order: 1 !important; text-align: right !important; }
+.reveal:has(app-login) #HeaderBox1 img { max-height: 58px !important; width: auto !important; }
+.reveal:has(app-login) #HeaderBox2 { order: 2 !important; }
+.reveal:has(app-login) h1, .reveal:has(app-login) h1 a {
+  text-align: center !important;
+  font-size: 1.5rem !important;
+  font-weight: 700 !important;
+  color: #1E1E1E !important;
+  text-decoration: none !important;
+  margin-top: 1.1rem !important;
+}
+.reveal:has(app-login) #ContentBox, .reveal:has(app-login) #ContentBox .row { margin: 0 !important; }
+.reveal:has(app-login) #Content { padding: 0 !important; }
+
+app-login > .row { justify-content: center !important; margin: 0 !important; }
+#login-form.login-form { width: 100% !important; max-width: 340px !important; float: none !important; }
+#login-form .form-control, #login-form input:not(.d-none) { border-radius: 10px !important; }
+#login-form .input-group .form-control:focus {
+  border-color: #00C26F !important;
+  box-shadow: 0 0 0 .2rem rgba(0, 194, 111, .20) !important;
+  outline: 0 !important;
+}
+#login-button { display: block !important; width: 100% !important; margin-top: .5rem !important; }
