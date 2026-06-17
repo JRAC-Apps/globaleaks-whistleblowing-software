@@ -118,3 +118,4 @@ app-login > .row { justify-content: center !important; margin: 0 !important; }
   outline: 0 !important;
 }
 #login-button { display: block !important; width: 100% !important; margin-top: .5rem !important; }
+#forgot-button { display: block !important; text-align: center !important; margin-top: .75rem !important; }
