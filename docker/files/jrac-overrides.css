@@ -18,14 +18,14 @@ html, body { background: #F1F1F1 !important; }
   padding: 2.25rem 2.5rem 1.75rem !important;
 }
 
-/* header: logo kept to the side (brand-compliant), title centered */
+/* header: logo centered (per JRAC request 2026-06-17), title centered */
 .public #HeaderBox {
   padding: 0 0 1.25rem 0 !important;
   border-bottom: 1px solid #F1F1F1 !important;
   margin-bottom: 1.75rem !important;
 }
 .public #HeaderBox .d-flex { flex-direction: column !important; align-items: stretch !important; }
-.public #HeaderBox1 { order: 1 !important; text-align: right !important; }
+.public #HeaderBox1 { order: 1 !important; text-align: center !important; }
 .public #HeaderBox1 img { max-height: clamp(42px, 8vw, 62px) !important; width: auto !important; }
 .public #HeaderBox2 { order: 2 !important; }
 
@@ -95,7 +95,7 @@ contentinfo, footer { text-align: center !important; }
   margin-bottom: 1.75rem !important;
 }
 .reveal:has(app-login) #HeaderBox .d-flex { flex-direction: column !important; align-items: stretch !important; }
-.reveal:has(app-login) #HeaderBox1 { order: 1 !important; text-align: right !important; }
+.reveal:has(app-login) #HeaderBox1 { order: 1 !important; text-align: center !important; }
 .reveal:has(app-login) #HeaderBox1 img { max-height: clamp(42px, 8vw, 62px) !important; width: auto !important; }
 .reveal:has(app-login) #HeaderBox2 { order: 2 !important; }
 .reveal:has(app-login) h1, .reveal:has(app-login) h1 a {
