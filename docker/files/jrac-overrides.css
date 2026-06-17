@@ -26,7 +26,7 @@ html, body { background: #F1F1F1 !important; }
 }
 .public #HeaderBox .d-flex { flex-direction: column !important; align-items: stretch !important; }
 .public #HeaderBox1 { order: 1 !important; text-align: right !important; }
-.public #HeaderBox1 img { max-height: 58px !important; width: auto !important; }
+.public #HeaderBox1 img { max-height: clamp(42px, 8vw, 62px) !important; width: auto !important; }
 .public #HeaderBox2 { order: 2 !important; }
 
 .public h1, .public h1 a, .public #HeaderBox1 a {
@@ -96,7 +96,7 @@ contentinfo, footer { text-align: center !important; }
 }
 .reveal:has(app-login) #HeaderBox .d-flex { flex-direction: column !important; align-items: stretch !important; }
 .reveal:has(app-login) #HeaderBox1 { order: 1 !important; text-align: right !important; }
-.reveal:has(app-login) #HeaderBox1 img { max-height: 58px !important; width: auto !important; }
+.reveal:has(app-login) #HeaderBox1 img { max-height: clamp(42px, 8vw, 62px) !important; width: auto !important; }
 .reveal:has(app-login) #HeaderBox2 { order: 2 !important; }
 .reveal:has(app-login) h1, .reveal:has(app-login) h1 a {
   text-align: center !important;
@@ -119,3 +119,12 @@ app-login > .row { justify-content: center !important; margin: 0 !important; }
 }
 #login-button { display: block !important; width: 100% !important; margin-top: .5rem !important; }
 #forgot-button { display: block !important; text-align: center !important; margin-top: .75rem !important; }
+
+/* --- responsive: tighter card on small screens (logo scales via clamp above) --- */
+@media (max-width: 575.98px) {
+  .public, .reveal:has(app-login) {
+    margin: 1rem auto !important;
+    padding: 1.5rem 1.25rem 1.25rem !important;
+    border-radius: 14px !important;
+  }
+}
