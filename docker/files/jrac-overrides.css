@@ -1,0 +1,5 @@
+/* JRAC custom client CSS overrides (ported from JRAC-Apps/globaleaks).
+   Appended to the deb-installed client stylesheet at image build time. */
+#PrivacyBadge { display: none !important; }
+.modal-title { display: none !important; }
+.form-floating > label { display: none !important; }

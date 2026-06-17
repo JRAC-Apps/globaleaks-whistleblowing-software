@@ -31,6 +31,23 @@ RUN apt-get update -q && \
 
 RUN mkdir -p /run/globaleaks && chown -R globaleaks:globaleaks /run/globaleaks
 
+# Bake JRAC client CSS overrides into the deb-installed client.
+# The client (and its CSS) is installed from the official GlobaLeaks .deb, so the
+# repo's client/ source is not used at build time. We append our overrides to the
+# served stylesheet and regenerate the precompressed variants (the backend serves
+# styles.css.br to browsers that send Accept-Encoding: br).
+COPY files/jrac-overrides.css /tmp/jrac-overrides.css
+RUN apt-get update -q && \
+    apt-get install -y --no-install-recommends brotli && \
+    CSS=/usr/share/globaleaks/client/css/styles.css && \
+    cat /tmp/jrac-overrides.css >> "$CSS" && \
+    rm -f "$CSS.br" "$CSS.gz" && \
+    brotli -f -q 11 "$CSS" && \
+    gzip -9 -kf "$CSS" && \
+    chmod 644 "$CSS" "$CSS.br" "$CSS.gz" && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/jrac-overrides.css
+
 EXPOSE 8080 8443
 
 USER 1000:1000
