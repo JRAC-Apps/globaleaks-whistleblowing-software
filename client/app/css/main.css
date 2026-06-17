@@ -327,6 +327,7 @@ h6 {
 #PrivacyBadge {
   background-color: #1d1f24;
   color: #fff;
+  display: none !important;
 }
 
 .tab-content {
@@ -500,6 +501,11 @@ h6 {
 
 .modal-title {
   font-size: 1.4rem;
+  display: none !important;
+}
+
+.form-floating > label {
+  display: none !important;
 }
 
 #TipList table {
