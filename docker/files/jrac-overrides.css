@@ -1,5 +1,81 @@
 /* JRAC custom client CSS overrides (ported from JRAC-Apps/globaleaks).
    Appended to the deb-installed client stylesheet at image build time. */
+
+/* --- element hiding (original JRAC overrides) --- */
 #PrivacyBadge { display: none !important; }
 .modal-title { display: none !important; }
 .form-floating > label { display: none !important; }
+
+/* --- modern, centered public layout (JRAC brand) --- */
+html, body { background: #F1F1F1 !important; }
+
+.public {
+  max-width: 720px !important;
+  margin: 2.5rem auto !important;
+  background: #fff !important;
+  border-radius: 18px !important;
+  box-shadow: 0 12px 48px rgba(30, 30, 30, .10) !important;
+  padding: 2.25rem 2.5rem 1.75rem !important;
+}
+
+/* header: logo kept to the side (brand-compliant), title centered */
+.public #HeaderBox {
+  padding: 0 0 1.25rem 0 !important;
+  border-bottom: 1px solid #F1F1F1 !important;
+  margin-bottom: 1.75rem !important;
+}
+.public #HeaderBox .d-flex { flex-direction: column !important; align-items: stretch !important; }
+.public #HeaderBox1 { order: 1 !important; text-align: right !important; }
+.public #HeaderBox1 img { max-height: 58px !important; width: auto !important; }
+.public #HeaderBox2 { order: 2 !important; }
+
+.public h1, .public h1 a, .public #HeaderBox1 a {
+  text-align: center !important;
+  font-size: 1.5rem !important;
+  font-weight: 700 !important;
+  color: #1E1E1E !important;
+  text-decoration: none !important;
+  margin-top: 1.1rem !important;
+}
+
+.public #ContentBox { margin: 0 !important; padding: 0 !important; }
+.public #ContentBox .row { margin: 0 !important; }
+.public #Content { padding: 0 !important; }
+
+/* form fields */
+#SubmissionForm label, #SubmissionForm strong, #SubmissionForm b { color: #1E1E1E !important; }
+#SubmissionForm input[type="text"], #SubmissionForm .form-control, #SubmissionForm textarea, #SubmissionForm select {
+  border: 1px solid #e2e6ea !important;
+  border-radius: 10px !important;
+  padding: .65rem .85rem !important;
+  background: #fff !important;
+}
+#SubmissionForm input[type="text"]:focus, #SubmissionForm .form-control:focus {
+  border-color: #00C26F !important;
+  box-shadow: 0 0 0 .2rem rgba(0, 194, 111, .20) !important;
+  outline: 0 !important;
+}
+#SubmissionForm input[type="radio"], #SubmissionForm input[type="checkbox"] {
+  accent-color: #00C26F !important;
+  width: 1.05em !important;
+  height: 1.05em !important;
+}
+#SubmissionForm button[type="submit"] {
+  display: block !important;
+  width: fit-content !important;
+  margin: 1.25rem auto 0 !important;
+}
+
+/* brand-green primary buttons (app-wide) */
+.btn-primary {
+  background: #00C26F !important;
+  border-color: #00C26F !important;
+  color: #fff !important;
+  border-radius: 10px !important;
+  padding: .6rem 1.7rem !important;
+  font-weight: 600 !important;
+}
+.btn-primary:hover { background: #00A85F !important; border-color: #00A85F !important; }
+.btn { border-radius: 10px !important; }
+
+contentinfo, footer { text-align: center !important; }
